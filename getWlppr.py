@@ -1,9 +1,8 @@
-#!/usr/bin/env python
-
 import urllib2
 import re
 import time
 import os
+import getpass
 
 def get_html(url):
 
@@ -43,7 +42,7 @@ def main():
   if images != None and len( images ) > 0:
 
       # find with help of regular expression path to image
-      filename = '/home/zabrodin/Downloads/Img'+time.strftime("%Y-%m-%d")+'.jpeg'
+      filename = '/home/%s/Downloads/Img%s.jpg'%( getpass.getuser() , time.strftime("%Y-%m-%d") )
       f 	   = open(filename, "w")
       f.write(images)
       f.close()
