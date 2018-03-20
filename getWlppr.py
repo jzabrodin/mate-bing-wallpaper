@@ -1,3 +1,4 @@
+#! /usr/bin/python
 import urllib2
 import re
 import time
@@ -33,14 +34,12 @@ def get_images( html_data , base_url ):
 
 def main():
 
-
   base_url = "http://bing.com"
   html_data = get_html(base_url)
 
   images = get_images( html_data , base_url )
 
   if images != None and len( images ) > 0:
-
       # find with help of regular expression path to image
       filename = '/home/%s/Downloads/Img%s.jpg'%( getpass.getuser() , time.strftime("%Y-%m-%d") )
       f 	   = open(filename, "w")
@@ -49,9 +48,6 @@ def main():
       print("Saved as %s"%filename)
       os.system("notify-send ""%s""" % filename)
       os.system("eom %s"%filename)
-  else:
-
-      print(images)
 
 	#os.system(str("xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set %s " % '/home/yevgen/YandexImages/Img'+time.strftime("%Y-%m-%d")+'.jpeg'))
 
